@@ -1,12 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
-import fondo from '../images/cursos.jpg'
 
-export default function ItemListContiner(props){
+function Titulo(props){
+    const {title, fondo}=props;
     
-    const {title}=props;
-    
-    const MySection=styled.section`
+    return(
+        <MySection fondo={fondo}>
+            <MyDiv>
+                <MyH1 >{title}</MyH1>
+            </MyDiv>
+        </MySection>
+    );
+}
+export default Titulo;
+
+const MySection=styled.section`
         background-repeat: no-repeat; 
         background-position: center; 
         background-size:cover;
@@ -21,31 +29,18 @@ export default function ItemListContiner(props){
         
         height: 40em;
         padding: 6rem 0;
-        background-image: url(${fondo});
+        background-image: url(${props=>props.fondo});
     `;
 
     const MyH1=styled.h1`
-            flex: 1;
-            font-size: 60px;   
-            font-weight: bold;
-            margin: 5px 0 0 0;
-            text-align: center;
+        flex: 1;
+        font-size: 60px;   
+        font-weight: bold;
+        margin: 5px 0 0 0;
+        text-align: center;
     `;
 
     const MyDiv=styled.div`
         flex: 1;
         margin: 120px 10px 100px 0;
     `;
-
-    
-    return(
-        <>
-        <MySection>
-            <MyDiv>
-                <MyH1>{title}</MyH1>
-            </MyDiv>
-        </MySection>
-            
-        </>
-    );
-}

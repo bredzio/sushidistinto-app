@@ -1,0 +1,53 @@
+export const cursos=[
+{
+    "id": 1,
+    "title":"Nivel 1",
+    "cantidad":0,
+    "contenido": [
+        "Cocción del arroz",
+        "Vinagreta Zu",
+        "Cortes del salmón",
+        "Geishas de Salmón",
+        "Niguiris de Salmón Rosado",
+        "Rellenos de rolls",
+        "Corte de Rolls",
+        "Decoración de los rolls",
+        "Uramakis",
+        "Makis"
+    ],
+    "precio": 1700
+},
+{
+    "id": 2,
+    "title":"Nivel 2",
+    "cantidad":0,
+    "contenido": [
+        "Arroz con Tinta de Calamar",
+        "Vinagreta Zu",
+        "Cortes del salmón",
+        "Geishas de Salmón",
+        "Batatas Fritas",
+        "Tamago Roll",
+        "Hot Roll",
+        "Niguiris flambeados con salsa Teriyaki",
+        "Uramakis"
+    ],
+    "precio": 1700
+},{
+    "id": 3,
+    "title":"Nivel 3",
+    "cantidad":0,
+    "contenido": [
+            "Arroz con Tinta de Calamar",
+        "Vinagreta Zu",
+        "Cortes del salmón",
+        "Geishas de Salmón",
+        "Batatas Fritas",
+        "Tamago Roll",
+        "Hot Roll",
+        "Niguiris flambeados con salsa Teriyaki",
+        "Uramakis"
+    ],
+    "precio": 1700
+}
+]
