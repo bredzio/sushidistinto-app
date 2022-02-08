@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import {Link} from 'react-router-dom';
 
 export const Curso = ( {title, contenido, precio, id} ) => {
 
@@ -15,7 +16,10 @@ export const Curso = ( {title, contenido, precio, id} ) => {
                             )}             
                             
                         </ul>
-                        <button className="btn btn-outline-danger btn-lg w-100" id="agregar">+ info</button>
+                        <Link to={`/detalle/${id}`}>
+                            <button className="btn btn-outline-danger btn-lg w-100" id="agregar">+ info</button>
+                        </Link>
+                        
                     </div>
                 </div>   
         </div>

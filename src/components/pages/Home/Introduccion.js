@@ -12,7 +12,7 @@ function Introduccion(){
                 <MyH2>Recetas | Eventos | Talleres</MyH2>
                 
                 <div className="div-botones">
-                    <MyButton to="./cursos" className="btn btn-light btn-lg active botones" role="button" aria-pressed="true">Cursos</MyButton>
+                    <MyButton to="./tienda" className="btn btn-light btn-lg active botones" role="button" aria-pressed="true">Cursos</MyButton>
                 </div>
 
             </MyDiv>

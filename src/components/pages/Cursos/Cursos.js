@@ -8,7 +8,6 @@ function Cursos(){
         <>
         <Titulo title="Cursos en Línea" fondo={fondo}/>
         <ContainerCursos/>
-        
         </>
     );
 }

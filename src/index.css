@@ -16,8 +16,13 @@
     color: #824653;
     background-color: transparent;
     border-color: #824653;
-
 }
+
+.btn-danger {
+    background-color: #824653 !important;
+    border-color: #824653;
+}
+
 
 .btn-outline-danger:hover {
     color: #fff;

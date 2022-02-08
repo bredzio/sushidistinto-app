@@ -12,10 +12,10 @@ function CursoRecomendado(){
                 <br/>    
                 <MyDiv><Text>Los cursos incluidos en este nivel son: preparaciones de ingredientes, cortes, rolls y presentación final. Si deseas ver más detalles sobre estos cursos puedes visitar la tienda de Sushi Distinto.</Text></MyDiv>
                 <br/>
-            <MyDiv><MyH2><MySpan>3400ARS</MySpan> 1700ARS</MyH2></MyDiv>
+            <MyDiv><MyH2><MySpan>170USD</MySpan> 100USD</MyH2></MyDiv>
             
             <MyDiv className="div-botones-recomendado">
-                <MyButton to="./cursos" className="btn btn-dark btn-lg active botones" role="button" aria-pressed="true">Quiero ser Sushiman!</MyButton>
+                <MyButton to="./detalle/1" className="btn btn-dark btn-lg active botones" role="button" aria-pressed="true">Quiero ser Sushiman!</MyButton>
             </MyDiv>
         </MySection>    
         </>

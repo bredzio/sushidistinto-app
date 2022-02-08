@@ -15,7 +15,8 @@ export const cursos=[
         "Uramakis",
         "Makis"
     ],
-    "precio": 1700
+    "precio": 100,
+    "categoria":"cursos"
 },
 {
     "id": 2,
@@ -32,7 +33,8 @@ export const cursos=[
         "Niguiris flambeados con salsa Teriyaki",
         "Uramakis"
     ],
-    "precio": 1700
+    "precio": 100,
+    "categoria":"cursos"
 },{
     "id": 3,
     "title":"Nivel 3",
@@ -48,6 +50,97 @@ export const cursos=[
         "Niguiris flambeados con salsa Teriyaki",
         "Uramakis"
     ],
-    "precio": 1700
+    "precio": 100,
+    "categoria":"cursos"
+},
+{
+    "id": 4,
+    "title":"MasterClass de Cortes",
+    "cantidad":0,
+    "contenido": [
+            "Arroz con Tinta de Calamar",
+        "Vinagreta Zu",
+        "Cortes del salmón",
+        "Geishas de Salmón",
+        "Batatas Fritas",
+        "Tamago Roll",
+        "Hot Roll",
+        "Niguiris flambeados con salsa Teriyaki",
+        "Uramakis"
+    ],
+    "precio": 50,
+    "categoria":"masterclass"
+},
+{
+    "id": 5,
+    "title":"MasterClass de Pescados",
+    "cantidad":0,
+    "contenido": [
+            "Arroz con Tinta de Calamar",
+        "Vinagreta Zu",
+        "Cortes del salmón",
+        "Geishas de Salmón",
+        "Batatas Fritas",
+        "Tamago Roll",
+        "Hot Roll",
+        "Niguiris flambeados con salsa Teriyaki",
+        "Uramakis"
+    ],
+    "precio": 50,
+    "categoria":"masterclass"
+},
+{
+    "id": 6,
+    "title":"MasterClass de Salsas",
+    "cantidad":0,
+    "contenido": [
+            "Arroz con Tinta de Calamar",
+        "Vinagreta Zu",
+        "Cortes del salmón",
+        "Geishas de Salmón",
+        "Batatas Fritas",
+        "Tamago Roll",
+        "Hot Roll",
+        "Niguiris flambeados con salsa Teriyaki",
+        "Uramakis"
+    ],
+    "precio": 50,
+    "categoria":"masterclass"
+},
+{
+    "id": 7,
+    "title":"Nivel 1, 2 y 3",
+    "cantidad":0,
+    "contenido": [
+            "Arroz con Tinta de Calamar",
+        "Vinagreta Zu",
+        "Cortes del salmón",
+        "Geishas de Salmón",
+        "Batatas Fritas",
+        "Tamago Roll",
+        "Hot Roll",
+        "Niguiris flambeados con salsa Teriyaki",
+        "Uramakis"
+    ],
+    "precio": 150,
+    "categoria":"promociones"
+},
+{
+    "id": 8,
+    "title":"MasterClass de salsas, prescados y cortes",
+    "cantidad":0,
+    "contenido": [
+            "Arroz con Tinta de Calamar",
+        "Vinagreta Zu",
+        "Cortes del salmón",
+        "Geishas de Salmón",
+        "Batatas Fritas",
+        "Tamago Roll",
+        "Hot Roll",
+        "Niguiris flambeados con salsa Teriyaki",
+        "Uramakis"
+    ],
+    "precio": 100,
+    "categoria":"promociones"
 }
 ]

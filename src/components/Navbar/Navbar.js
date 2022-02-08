@@ -21,7 +21,7 @@ const Menu = () =>{
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <MyUl className="nav justify-content-end">
                                 <li className='nav-item'>
-                                    <MyLink to="/cursos">Cursos</MyLink>
+                                    <MyLink to="/tienda">Tienda</MyLink>
                                 </li>
                                 <li className='nav-item'>
                                     <MyLink to="/servicios">Servicios</MyLink>
