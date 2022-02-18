@@ -5,7 +5,7 @@ import Home from "../pages/Home/Home"
 import Nosotros from "../pages/Nosotros";
 import Servicios from "../pages/Servicios/Servicios";
 import Contacto from "../pages/Contacto";
-import Checkout from "../pages/Checkout";
+import Checkout from "../pages/Checkout/Checkout";
 import Cursos from "../pages/Cursos/Cursos";
 
 import Menu from "./Navbar";

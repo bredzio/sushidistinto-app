@@ -127,7 +127,7 @@ export const cursos=[
 },
 {
     "id": 8,
-    "title":"MasterClass de salsas, prescados y cortes",
+    "title":"MasterClass de salsas, pescados y cortes",
     "cantidad":0,
     "contenido": [
             "Arroz con Tinta de Calamar",

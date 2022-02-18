@@ -1,14 +1,16 @@
 import Footer from "./components/Footer";
-import ItemListContainer from "./components/ItemListContainer";
 import Menu from "./components/Navbar/Menu";
+
+import {CartProvider} from "./components/context/CartContext";
 
 function App() {
   return (
-    <div className="App">
-     <Menu/>
-
-    <Footer/>
-    </div>
+      <CartProvider>
+        <div className="App">
+          <Menu/>
+          <Footer/>
+        </div>
+      </CartProvider>
   );
 }
 

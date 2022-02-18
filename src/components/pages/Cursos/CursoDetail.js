@@ -1,10 +1,29 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
+import {Link} from 'react-router-dom';
 
 
-export const CursoDetail=({title, cantidad, contenido, precio})=>
-{
-    
+import {CartContext} from "../../context/CartContext";
+
+export const CursoDetail=({title, contenido, precio, id})=>
+{   
+    const [cantidad, setCantidad] = useState(1);
+    const {agregarAlCarrito, isInCart} = useContext(CartContext);
+
+    const handleAgregar=()=>{
+        if(cantidad === 0) return
+
+        if(!isInCart(id)){
+            const addCurso={
+                id, title,contenido,precio, cantidad
+            }
+            console.log(addCurso)
+            agregarAlCarrito(addCurso)
+
+        }
+
+    }
+
     return(
         <>
             <div className="container align-items-center">
@@ -64,8 +83,16 @@ export const CursoDetail=({title, cantidad, contenido, precio})=>
                                         </FormGroup>
 
                                         <FormButtom>
-                                            <input type="submit"value="Completar mi compra" className="btn btn-danger btn-lg w-100"></input>
-                                        </FormButtom>
+                                        {
+                                            isInCart(id)
+                                            ?<Link to="/checkout" className="btn btn-danger btn-lg w-100">Terminar Compra</Link>
+                                            :
+                                            
+                                            
+                                            <button className="btn btn-danger btn-lg w-100" onClick={handleAgregar}>Agregar al carrito</button>
+                                        }
+                                            </FormButtom>
+                                        
                                     </FormControl>
 
                                 </PanelBody>
