@@ -1,6 +1,8 @@
 import React,{useContext} from 'react';
 import styled from 'styled-components';
 import {CartContext} from '../../context/CartContext';
+import {Link} from 'react-router-dom';
+
 import {Item} from '../Checkout/Item'
 
 function Carrito(){
@@ -27,16 +29,22 @@ function Carrito(){
                 <ul className="list-group mb-3">
 
                 { cart.map( (el, i) => 
-                <Item key={i} {...el}/>
+                    <Item key={i} {...el}/>
                 )}
                 
                   <li className="list-group-item d-flex justify-content-between">
                     <span className="text-dark">Total (USD)</span>
-                    <strong className="text-dark">${valorTotal()}</strong>
+                    <strong className="text-dark">${valorTotal()}.00</strong>
                   </li>
                 </ul>
                 
-                <button type="submit" className="btn btn-danger" onClick={vaciarCarrito}>Vaciar carrito</button>
+                {
+                  cantidadCart()===0 
+                  ?<Link to="/tienda" className="btn btn-danger">Empezar a comprar</Link>
+                  :
+                  <button type="submit" className="btn btn-danger" onClick={vaciarCarrito}>Vaciar carrito</button>
+
+                }
           
               </div>
               <div className="col-md-8 order-md-1">

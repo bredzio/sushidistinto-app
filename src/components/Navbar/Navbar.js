@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
+
 import styled from 'styled-components';
 import logo from '../../images/logo.png';
 import Cart from './CartWidget';
+import { CartContext } from '../context/CartContext';
 
 
 import { Link, NavLink } from "react-router-dom";
 
 const Menu = () =>{
- 
+    const {cantidadCart}=useContext(CartContext);
+
     return(
         <MyHeader>
             <MyNavbar className="navbar navbar-expand-lg navbar-light" >
@@ -36,7 +39,7 @@ const Menu = () =>{
                                 </li>
 
                                 <li className='nav-item'>
-                                    <Link to="/checkout"><Cart></Cart></Link>
+                                    <Link to="/checkout" hidden={cantidadCart() ===0 ? "hidden": ""}><Cart></Cart></Link>
                                 </li>
                         </MyUl>
                     </div>

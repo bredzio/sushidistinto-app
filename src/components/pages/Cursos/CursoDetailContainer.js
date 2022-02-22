@@ -8,8 +8,10 @@ import Titulo from '../Titulo';
 
 import { Loading } from './Loading';
 import {useParams} from 'react-router-dom';
-import { ResponseData } from '../../helpers/ResponseData';
 import {CursoDetail} from './CursoDetail';
+
+import {db} from '../../../firebase/config';
+import { doc, getDoc } from 'firebase/firestore';
 
 function CursoDetailContainer(){
     const [loading, setLoading] = useState(false);
@@ -20,18 +22,14 @@ function CursoDetailContainer(){
     useEffect( () => {
         setLoading(true)
         
-
-        ResponseData()
-            .then((res) => {
-                setItem(res.find((el)=>el.id===Number(itemId)))
-            })
-            .catch((err) => {
-                console.log(err)
-            })
-            .finally(() => {
-               setLoading(false)
-            })
-
+        const docRef = doc(db, "productos", itemId)
+       
+        getDoc(docRef).then((doc)=>{
+           setItem({id:doc.id, ...doc.data()})
+        })
+        .finally(()=>{
+            setLoading(false)
+        })
     }, [itemId])
  
     return(

@@ -2,11 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {CursosList} from '../Cursos/CursosList';
-import {ResponseData} from '../../helpers/ResponseData';
 import { useEffect, useState } from "react";
 import {Loading} from '../Cursos/Loading';
 import {useParams} from 'react-router-dom';
 import Categorias from './Categorias';
+
+import {db} from '../../../firebase/config';
+import { collection, getDocs, query, where } from 'firebase/firestore';
 
 
 
@@ -16,27 +18,29 @@ function ContainerCursos(){
 
     const {cursoId} = useParams();
 
-    useEffect( () => {
+    
+    useEffect( ()=>{
         setLoading(true)
+
+        const productosRef = collection(db,'productos')
         
+        const q = cursoId ? query(productosRef, where ("categoria","==",cursoId)) : productosRef
 
-        ResponseData()
-            .then((res) => {
-            if(cursoId && 
-                res.filter(((el)=>el.categoria===cursoId)).length!==0){
-                    setCursos( res.filter(((el)=>el.categoria===cursoId )) )
-                }else{
-                    setCursos(res)
+        getDocs(q)
+        .then((resp)=>{
+            setCursos(resp.docs.map((doc)=>{
+                return{
+                    id:doc.id,
+                    ...doc.data()
                 }
-            })
-            .catch((err) => {
-                console.log(err)
-            })
-            .finally(() => {
-               setLoading(false)
-            })
+            }))
+        })
+        .finally(()=>{
+            setLoading(false)
+        })
 
-    }, [cursoId])
+    
+    },[cursoId])
 
 
     return(

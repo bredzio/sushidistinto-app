@@ -5,7 +5,7 @@ import {useState} from "react";
 
 import {CartContext} from "../../context/CartContext";
 
-export const Curso = ( {title, contenido, precio, id, min=0} ) => {
+export const Curso = ( {title, contenido,categoria, precio, id, min=0} ) => {
 
     const [cantidad, setCantidad] = useState(0);
 
@@ -25,7 +25,7 @@ export const Curso = ( {title, contenido, precio, id, min=0} ) => {
 
         if(!isInCart(id)){
             const addCurso={
-                id, title,contenido,precio, cantidad
+                id, title,contenido,precio, cantidad, categoria
             }
             agregarAlCarrito(addCurso)
 
@@ -38,7 +38,7 @@ export const Curso = ( {title, contenido, precio, id, min=0} ) => {
                 <div className="card shadow-sm border-danger" >
                     <div className="card-body">
                         <h4 className="card-header py-3 text-white bg-danger border-danger">{title}</h4> 
-                        <MyPrice className="my-3 font-weight-normal text-center">${precio}<small className="text-muted">/+iva</small></MyPrice>
+                        <MyPrice className="my-3 font-weight-normal text-center">${precio}.00<small className="text-muted">/+iva</small></MyPrice>
                         <ul className="list-unstyled mt-3 mb-4">
                             {contenido.map((el, id)=>
                                 <MyText key={id}>{el}</MyText>
