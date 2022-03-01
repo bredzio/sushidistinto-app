@@ -1,13 +1,51 @@
-import React,{useContext} from 'react';
+import React,{useContext, useState} from 'react';
 import styled from 'styled-components';
 import {CartContext} from '../../context/CartContext';
-import {Link} from 'react-router-dom';
+import {Link, Navigate} from 'react-router-dom';
 
 import {Item} from '../Checkout/Item'
 
+import {GenerarOrden} from '../../../firebase/GenerarOrden'
+import { validar } from './validar';
+
+
+import {Abonar} from'./Abonar'
+import {ThankYou} from './ThankYou'
+
+
 function Carrito(){
 
-    const {valorTotal, cantidadCart, cart, vaciarCarrito} = useContext(CartContext)
+    const {valorTotal, cantidadCart, cart, vaciarCarrito, comprador, idPago} = useContext(CartContext)
+    const [orderId, setOrderId] = useState(null)
+
+
+    const [values, setValues] = useState(comprador)
+
+    const handleInputChange=(e)=>{
+      setValues({
+        ...values,
+        [e.target.name]:e.target.value
+      })
+    }
+
+    const handleSubmit=(e)=>{
+      e.preventDefault()
+      
+      validar(values) && GenerarOrden(values, cart, valorTotal, setOrderId, vaciarCarrito)
+      
+    }
+
+    if(idPago){
+      return <ThankYou order={orderId}/>
+    }
+
+    if(orderId){
+      return <Abonar/>
+    }
+
+    if(cart.length === 0){
+      return <Navigate to='/'/>
+    }
 
     return(
       <>
@@ -49,18 +87,19 @@ function Carrito(){
               </div>
               <div className="col-md-8 order-md-1">
                 <h4 className="mb-3 text-muted">Facturación</h4>
-                <form className="needs-validation" novalidate>
+
+                <form className="needs-validation" onSubmit={handleSubmit}>
                   <div className="row">
                     <div className="col-md-6 mb-3">
                       <label for="firstName" className='text-dark'>Nombre</label>
-                      <input type="text" className="form-control text-dark" id="firstName" placeholder="" value="" required/>
+                      <input type="text" className="form-control text-dark" id="nombre" placeholder="Tu nombre" value={values.nombre} required onChange={handleInputChange} name='nombre'/>
                       <div className="invalid-feedback">
                         Valid first name is required.
                       </div>
-                    </div>
+                    </div>npm
                     <div className="col-md-6 mb-3">
                       <label for="lastName" className='text-dark'>Apellido</label>
-                      <input type="text" className="form-control" id="lastName" placeholder="" value="" required/>
+                      <input type="text" className="form-control" id="lastName" placeholder="" value={values.apellido} required onChange={handleInputChange} name='apellido'/>
                       <div className="invalid-feedback">
                         Valid last name is required.
                       </div>
@@ -68,8 +107,8 @@ function Carrito(){
                   </div>
 
                   <div className="mb-3">
-                    <label for="email" className='text-dark'>Email <span className="text-muted">(Opcional)</span></label>
-                    <input type="email" className="form-control" id="email" placeholder="usuario@email.com"/>
+                    <label for="email" className='text-dark'>Correo electrónico</label>
+                    <input type="email" className="form-control" id="email" placeholder="usuario@email.com" value={values.email} onChange={handleInputChange} name='email'/>
                     <div className="invalid-feedback">
                       Please enter a valid email address for shipping updates.
                     </div>
@@ -77,46 +116,20 @@ function Carrito(){
 
                   <div className="mb-3">
                     <label for="address" className='text-dark'>Dirección principal</label>
-                    <input type="text" className="form-control" id="address" placeholder="1234 Main St" required/>
+                    <input type="text" className="form-control" id="address" placeholder="Avenida 1234" required value={values.direccion} onChange={handleInputChange} name='direccion'/>
                     <div className="invalid-feedback">
                       Please enter your shipping address.
                     </div>
                   </div>
-
-                  <div className="mb-3">
-                    <label for="address2" className='text-dark'>Dirección secundaria <span className="text-muted">(Opcional)</span></label>
-                    <input type="text" className="form-control" id="address2" placeholder="Apartment or suite"/>
-                  </div>
-
-               
-                  <hr className="mb-4"/>
-                    <div className="custom-control custom-checkbox">
-                      <input type="checkbox" className="custom-control-input" id="same-address"/>
-                      <label className="custom-control-label text-dark" for="same-address">Shipping address is the same as my billing address</label>
-                    </div>
-                    <div className="custom-control custom-checkbox">
-                      <input type="checkbox" className="custom-control-input" id="save-info"/>
-                      <label className="custom-control-label text-dark" for="save-info">Save this information for next time</label>
-                    </div>
-                  <hr className="mb-4"/>
-
-                  <h4 className="mb-3 text-dark">Pagos</h4>
-
-                  <div className="d-block my-3">
-                    <div className="custom-control custom-radio">
-                      <input id="credit" name="paymentMethod" type="radio" className="custom-control-input" checked required/>
-                      <label className="custom-control-label text-dark" for="credit">Mercado Pago</label>
-                    </div>
-                    <div className="custom-control custom-radio">
-                      <input id="debit" name="paymentMethod" type="radio" className="custom-control-input" required/>
-                      <label className="custom-control-label text-dark" for="debit">PayPal</label>
-                    </div>
-                
-                  </div>
+              
       
   
                   <hr className="mb-4"/>
-                  <button className="btn btn-danger btn-lg btn-block" type="submit">Finalizar compra</button>
+                  <button className="btn btn-danger btn-lg btn-block" type="submit" >Finalizar compra</button>
+                  
+
+
+
                 </form>
               </div>
             </div>

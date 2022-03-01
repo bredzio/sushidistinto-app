@@ -8,9 +8,22 @@ export const CartProvider =({children})=>{
     
   const [cart, setCart]=useState([])
 
+  const [idPago, setIdPago] = useState('')
+
+
     const agregarAlCarrito=(item)=>{
       setCart( [...cart, item] )
     }
+
+    const [comprador, setComprador] = useState({
+      nombre:'',
+      apellido:'',
+      email:''
+  })
+
+  const agregarComprador=(e)=>{
+    setComprador(e)
+  }
   
     const isInCart = (id)=>{
       return cart.some((prod)=>prod.id===id)
@@ -33,7 +46,7 @@ export const CartProvider =({children})=>{
     }
     
     return(
-        <CartContext.Provider value={{cart, agregarAlCarrito, isInCart, cantidadCart,valorTotal, vaciarCarrito, eliminarItem}}>
+        <CartContext.Provider value={{cart,idPago, setIdPago, agregarAlCarrito,agregarComprador, isInCart, cantidadCart,valorTotal, vaciarCarrito, eliminarItem, comprador}}>
 
         {children}
         </CartContext.Provider>

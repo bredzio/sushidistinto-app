@@ -15,7 +15,7 @@ function CursoRecomendado(){
             <MyDiv><MyH2><MySpan>170USD</MySpan> 100USD</MyH2></MyDiv>
             
             <MyDiv className="div-botones-recomendado">
-                <MyButton to="./detalle/1" className="btn btn-dark btn-lg active botones" role="button" aria-pressed="true">Quiero ser Sushiman!</MyButton>
+                <MyButton to="./detalle/W4oyvRMmhLmVL56AEQSH" className="btn btn-dark btn-lg active botones" role="button" aria-pressed="true">Quiero ser Sushiman!</MyButton>
             </MyDiv>
         </MySection>    
         </>

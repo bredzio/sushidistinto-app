@@ -8,7 +8,21 @@ import {CartContext} from "../../context/CartContext";
 export const CursoDetail=({title, contenido, precio, id})=>
 {   
     const [cantidad, setCantidad] = useState(1);
-    const {agregarAlCarrito, isInCart} = useContext(CartContext);
+    const {agregarAlCarrito, isInCart, agregarComprador} = useContext(CartContext);
+    
+    const [values, setValues] = useState({
+        nombre:'',
+        apellido:'',
+        email:''
+    })
+    
+
+    const handleInputChange=(e)=>{
+        setValues({
+          ...values,
+          [e.target.name]:e.target.value
+        })
+    }
 
     const handleAgregar=()=>{
         if(cantidad === 0) return
@@ -17,9 +31,8 @@ export const CursoDetail=({title, contenido, precio, id})=>
             const addCurso={
                 id, title,contenido,precio, cantidad
             }
-            console.log(addCurso)
             agregarAlCarrito(addCurso)
-
+            agregarComprador(values)
         }
 
     }
@@ -56,15 +69,15 @@ export const CursoDetail=({title, contenido, precio, id})=>
                                 <PanelBody>
                                     <FormControl className="form-control">
                                         <FormGroup>
-                                            <input className="form-control string email required form-control required"  placeholder="Nombre" type="text" value="" ></input>
+                                            <input className="form-control string email required form-control required"  placeholder="Nombre" type="text" value={values.nombre}  onChange={handleInputChange} name='nombre'></input>
                                         </FormGroup>
 
                                         <FormGroup>
-                                            <input className="form-control string email required form-control required"  placeholder="Apellido" type="text" value="" ></input>
+                                            <input className="form-control string email required form-control required"  placeholder="Apellido" type="text" value={values.apellido}  onChange={handleInputChange} name='apellido' ></input>
                                         </FormGroup>
 
                                         <FormGroup>
-                                            <input className="form-control string email required form-control required"  placeholder="Dirección de correo electrónico" type="email" value="" ></input>
+                                            <input className="form-control string email required form-control required"  placeholder="Dirección de correo electrónico" type="email" value={values.email}  onChange={handleInputChange} name='email' ></input>
                                         </FormGroup>
                                         
                                         <FormGroup>
